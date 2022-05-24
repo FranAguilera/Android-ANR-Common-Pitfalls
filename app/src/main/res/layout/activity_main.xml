@@ -8,10 +8,13 @@
 
     <Button
         android:id="@+id/long_ui_operation"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Long Operation on UI thread"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/margin_top"
+        android:text="@string/long_operation_on_ui_thread"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/blocking_api"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,10 +22,13 @@
 
     <Button
         android:id="@+id/blocking_api"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
         android:text="@string/blocking_api_call_button_text"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/android_components"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,10 +36,13 @@
 
     <Button
         android:id="@+id/android_components"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
         android:text="@string/broadcastreceiver_button_text"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/deadlock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,10 +50,13 @@
 
     <Button
         android:id="@+id/deadlock"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
         android:text="@string/deadlock_button_text"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/android_components" />
