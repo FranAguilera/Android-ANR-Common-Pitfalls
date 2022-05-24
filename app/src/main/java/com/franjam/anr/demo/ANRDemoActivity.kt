@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import com.franjam.anr.demo.basic_components.BroadcastReceiverDemo
+import com.franjam.anr.demo.deadlock.GenerateDeadlock
+import com.franjam.anr.demo.expensive_operation.ReportDetails
+import com.franjam.anr.demo.rxblocking.BlockingRxApi
 
 class ANRDemoActivity : AppCompatActivity() {
 
@@ -37,17 +41,11 @@ class ANRDemoActivity : AppCompatActivity() {
         override fun onClick(currentView: View?) {
             currentView?.let {
                 when (it.id) {
-                    R.id.long_ui_operation -> Log.d(
-                        LOGCAT_TAG,
-                        "long operation on UI thread button clicked"
-                    )
-                    R.id.blocking_api -> Log.d(LOGCAT_TAG, "blockingApiCallButton button clicked")
-                    R.id.android_components -> Log.d(
-                        LOGCAT_TAG,
-                        "broadcastReceiverDemo button clicked"
-                    )
-                    R.id.deadlock -> Log.d(LOGCAT_TAG, "deadlockDemo button clicked")
-                    else -> Log.d(LOGCAT_TAG, "Failed to load button click listener")
+                    R.id.long_ui_operation -> ReportDetails().getInformationFromFile()
+                    R.id.blocking_api -> BlockingRxApi().getStoredId()
+                    R.id.android_components -> BroadcastReceiverDemo().sendBroadcast()
+                    R.id.deadlock -> GenerateDeadlock().getUserIdInBackgroundThread()
+                    else -> Log.d(LOGCAT_TAG, "Unwanted listener for button view")
                 }
             }
         }
