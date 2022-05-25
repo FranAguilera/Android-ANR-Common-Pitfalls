@@ -1,16 +1,18 @@
 package com.franjam.anr.demo
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.franjam.anr.app_exit_info.LatestAppExitReason
 import com.franjam.anr.demo.basic_components.BroadcastReceiverDemo
 import com.franjam.anr.demo.deadlock.GenerateDeadlock
 import com.franjam.anr.demo.expensive_operation.ReportDetails
 import com.franjam.anr.demo.rxblocking.BlockingRxApi
+
 
 class ANRDemoActivity : AppCompatActivity() {
 
@@ -29,6 +31,7 @@ class ANRDemoActivity : AppCompatActivity() {
         broadcastReceiverButton = findViewById(R.id.android_components)
         deadlockButton = findViewById(R.id.deadlock)
         latestExitReasonText = findViewById(R.id.latest_exit_reason_text)
+        latestExitReasonText.movementMethod = ScrollingMovementMethod()
 
         setupButtonClickListeners()
         displayLastExitReason()

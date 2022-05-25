@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Looper
 import android.util.Log
 import androidx.annotation.RequiresApi
+import java.lang.StringBuilder
 
 /**
  * Retrieves the latest reason for app termination
@@ -29,10 +30,19 @@ class LatestAppExitReason(applicationContext: Context) {
     fun getLatestExitReason(): ExitReasonData? {
         checkForMainThread();
         val lastKnownExitReasonIfPresent = getLastKnownExitReasonIfPresent()
-        lastKnownExitReasonIfPresent?.let {
-            val exitReasonType = mapToReadableExitReason(it)
-            val description = it.description
-            val anrData: AnrData? = null // Will updated in next commit
+        lastKnownExitReasonIfPresent?.let { applicationExitInfo ->
+            val exitReasonType = mapToReadableExitReason(applicationExitInfo)
+            val description = applicationExitInfo.description
+            var anrData: AnrData? = null // Will updated in next commit
+
+            if (exitReasonType == ExitReasonType.REASON_ANR) {
+                val anrStackTraceProcessor = AnrStackTraceProcessor()
+                val anrStackTrace =
+                    anrStackTraceProcessor.getProcessedAnrTrace(applicationExitInfo);
+                anrStackTrace?.let { processedAnrTrace ->
+                    anrData = AnrData(processedAnrTrace)
+                }
+            }
             return ExitReasonData(exitReasonType, description, anrData)
         }
         return null
@@ -48,10 +58,13 @@ class LatestAppExitReason(applicationContext: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             val latestAppExitReason = getLatestExitReason()
             latestAppExitReason?.let {
-                reasonDetails =
-                    "Last reason for app termination: " + it.latestExitReason + DEFAULT_LINE_BREAK +
-                            "Description: " + it.description
-                // To Add ANR title + trace info
+                val readableReason = StringBuilder()
+                readableReason.append("Last reason for app termination: " + it.latestExitReason + DEFAULT_LINE_BREAK)
+                readableReason.append("Description: " + it.description + DEFAULT_LINE_BREAK)
+                it.anrData?.let { anrData ->
+                    readableReason.append("Full Stacktrace: " + anrData.processedStackTrace)
+                }
+                reasonDetails = readableReason.toString()
             }
         } else {
             reasonDetails =
