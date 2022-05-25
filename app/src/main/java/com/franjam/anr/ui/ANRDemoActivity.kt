@@ -58,7 +58,7 @@ class ANRDemoActivity : AppCompatActivity() {
                 when (it.id) {
                     R.id.long_ui_operation -> ReportDetails().getInformationFromFile()
                     R.id.blocking_api -> BlockingRxApi().getStoredId()
-                    R.id.android_components -> BroadcastReceiverDemo().sendBroadcast()
+                    R.id.android_components -> BroadcastReceiverDemo().sendBroadcast(it.context)
                     R.id.deadlock -> DeadlockDemo().triggerDeadlock()
                     else -> Log.d(LOGCAT_TAG, "Unwanted listener for button view")
                 }
