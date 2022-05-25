@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.franjam.anr.app_exit_info.LatestAppExitReason
 import com.franjam.anr.demo.basic_components.BroadcastReceiverDemo
-import com.franjam.anr.demo.deadlock.GenerateDeadlock
+import com.franjam.anr.demo.deadlock.DeadlockDemo
 import com.franjam.anr.demo.expensive_operation.ReportDetails
 import com.franjam.anr.demo.rxblocking.BlockingRxApi
 
@@ -58,7 +58,7 @@ class ANRDemoActivity : AppCompatActivity() {
                     R.id.long_ui_operation -> ReportDetails().getInformationFromFile()
                     R.id.blocking_api -> BlockingRxApi().getStoredId()
                     R.id.android_components -> BroadcastReceiverDemo().sendBroadcast()
-                    R.id.deadlock -> GenerateDeadlock().getUserIdInBackgroundThread()
+                    R.id.deadlock -> DeadlockDemo().triggerDeadlock()
                     else -> Log.d(LOGCAT_TAG, "Unwanted listener for button view")
                 }
             }
