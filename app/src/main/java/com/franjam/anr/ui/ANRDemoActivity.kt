@@ -1,4 +1,4 @@
-package com.franjam.anr.demo
+package com.franjam.anr.ui
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
@@ -8,10 +8,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.franjam.anr.app_exit_info.LatestAppExitReason
-import com.franjam.anr.demo.basic_components.BroadcastReceiverDemo
-import com.franjam.anr.demo.deadlock.DeadlockDemo
-import com.franjam.anr.demo.expensive_operation.ReportDetails
-import com.franjam.anr.demo.rxblocking.BlockingRxApi
+import com.franjam.anr.common_anr_pitfalls.basic_components.BroadcastReceiverDemo
+import com.franjam.anr.common_anr_pitfalls.deadlock.DeadlockDemo
+import com.franjam.anr.demo.R
+import com.franjam.anr.common_anr_pitfalls.expensive_operation.ReportDetails
+import com.franjam.anr.common_anr_pitfalls.rxblocking.BlockingRxApi
 
 
 class ANRDemoActivity : AppCompatActivity() {

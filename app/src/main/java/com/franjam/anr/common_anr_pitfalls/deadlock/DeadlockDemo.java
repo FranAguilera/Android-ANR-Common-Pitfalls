@@ -1,4 +1,4 @@
-package com.franjam.anr.demo.deadlock;
+package com.franjam.anr.common_anr_pitfalls.deadlock;
 
 
 import android.util.Log;

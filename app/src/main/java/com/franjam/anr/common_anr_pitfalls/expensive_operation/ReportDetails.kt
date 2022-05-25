@@ -1,4 +1,4 @@
-package com.franjam.anr.demo.expensive_operation
+package com.franjam.anr.common_anr_pitfalls.expensive_operation
 
 class ReportDetails {
 

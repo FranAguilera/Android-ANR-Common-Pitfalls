@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ANRDemoActivity">
+    tools:context="com.franjam.anr.ui.ANRDemoActivity">
 
     <Button
         android:id="@+id/long_ui_operation"
@@ -65,11 +65,17 @@
         android:id="@+id/latest_exit_reason_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:scrollbars = "vertical"
-        android:layout_marginTop="@dimen/default_margin"
         android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
         android:layout_marginEnd="@dimen/default_margin"
+        android:fontFamily="sans-serif-medium"
+        android:rotationX="0"
+        android:scrollbars="vertical"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/deadlock" />
+        app:layout_constraintTop_toBottomOf="@+id/deadlock"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        tools:text="App exit info" />
 </androidx.constraintlayout.widget.ConstraintLayout>

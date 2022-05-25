@@ -1,4 +1,4 @@
-package com.franjam.anr.demo.rxblocking
+package com.franjam.anr.common_anr_pitfalls.rxblocking
 
 import io.reactivex.rxjava3.subjects.BehaviorSubject
 

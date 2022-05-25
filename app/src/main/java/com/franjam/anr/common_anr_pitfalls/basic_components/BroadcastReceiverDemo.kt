@@ -1,4 +1,4 @@
-package com.franjam.anr.demo.basic_components
+package com.franjam.anr.common_anr_pitfalls.basic_components
 
 class BroadcastReceiverDemo {
     fun sendBroadcast(){
