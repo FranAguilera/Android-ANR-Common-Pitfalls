@@ -15,6 +15,8 @@ class SampleBroadcastWithAnr : BroadcastReceiver() {
                 displayToaster(context, ACTION_NAME)
             }
             val reportDetails = ReportDetails()
+
+            // This method will may be expensive...
             val data = reportDetails.getInformationFromFile()
             // Handle your data here
         }
