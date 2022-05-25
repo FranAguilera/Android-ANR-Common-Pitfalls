@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
+import com.franjam.anr.app_exit_info.LatestAppExitReason
 import com.franjam.anr.demo.basic_components.BroadcastReceiverDemo
 import com.franjam.anr.demo.deadlock.GenerateDeadlock
 import com.franjam.anr.demo.expensive_operation.ReportDetails
@@ -16,6 +18,7 @@ class ANRDemoActivity : AppCompatActivity() {
     private lateinit var blockingApiCallButton: Button
     private lateinit var broadcastReceiverButton: Button
     private lateinit var deadlockButton: Button
+    private lateinit var latestExitReasonText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +28,12 @@ class ANRDemoActivity : AppCompatActivity() {
         blockingApiCallButton = findViewById(R.id.blocking_api)
         broadcastReceiverButton = findViewById(R.id.android_components)
         deadlockButton = findViewById(R.id.deadlock)
+        latestExitReasonText = findViewById(R.id.latest_exit_reason_text)
 
         setupButtonClickListeners()
+        displayLastExitReason()
     }
+
 
     private fun setupButtonClickListeners() {
         val buttonClickListener = ButtonClickListener()
@@ -35,6 +41,11 @@ class ANRDemoActivity : AppCompatActivity() {
         blockingApiCallButton.setOnClickListener(buttonClickListener)
         broadcastReceiverButton.setOnClickListener(buttonClickListener)
         deadlockButton.setOnClickListener(buttonClickListener)
+    }
+
+    private fun displayLastExitReason() {
+        val latestAppExitReason = LatestAppExitReason(applicationContext)
+        latestExitReasonText.text = latestAppExitReason.getReadableExitReasonText()
     }
 
     private class ButtonClickListener : View.OnClickListener {
