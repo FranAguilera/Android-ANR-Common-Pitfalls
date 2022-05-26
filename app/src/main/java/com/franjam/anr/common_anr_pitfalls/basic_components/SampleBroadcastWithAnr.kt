@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import com.franjam.anr.common_anr_pitfalls.expensive_operation.ReportDetails
+import com.franjam.anr.common_anr_pitfalls.expensive_operation.LongOperationDemo
 
 
 class SampleBroadcastWithAnr : BroadcastReceiver() {
@@ -14,11 +14,8 @@ class SampleBroadcastWithAnr : BroadcastReceiver() {
             if (it == ACTION_NAME) {
                 displayToaster(context, ACTION_NAME)
             }
-            val reportDetails = ReportDetails()
-
-            // This method will may be expensive...
-            val data = reportDetails.getInformationFromFile()
-            // Handle your data here
+            val longOperationDemo = LongOperationDemo()
+            longOperationDemo.longRunningMethod()
         }
     }
 

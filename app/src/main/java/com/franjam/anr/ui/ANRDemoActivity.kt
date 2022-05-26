@@ -11,7 +11,7 @@ import com.franjam.anr.app_exit_info.LatestAppExitReason
 import com.franjam.anr.common_anr_pitfalls.basic_components.BroadcastReceiverDemo
 import com.franjam.anr.common_anr_pitfalls.deadlock.DeadlockDemo
 import com.franjam.anr.demo.R
-import com.franjam.anr.common_anr_pitfalls.expensive_operation.ReportDetails
+import com.franjam.anr.common_anr_pitfalls.expensive_operation.LongOperationDemo
 import com.franjam.anr.common_anr_pitfalls.rxblocking.BlockingRxApi
 
 
@@ -56,7 +56,7 @@ class ANRDemoActivity : AppCompatActivity() {
         override fun onClick(currentView: View?) {
             currentView?.let {
                 when (it.id) {
-                    R.id.long_ui_operation -> ReportDetails().getInformationFromFile()
+                    R.id.long_ui_operation -> LongOperationDemo().longRunningMethod()
                     R.id.blocking_api -> BlockingRxApi().getStoredId()
                     R.id.android_components -> BroadcastReceiverDemo().sendBroadcast(it.context)
                     R.id.deadlock -> DeadlockDemo().triggerDeadlock()
