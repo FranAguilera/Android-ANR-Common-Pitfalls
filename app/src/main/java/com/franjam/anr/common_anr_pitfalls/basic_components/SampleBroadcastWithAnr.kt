@@ -13,9 +13,8 @@ class SampleBroadcastWithAnr : BroadcastReceiver() {
         intent?.action?.let {
             if (it == ACTION_NAME) {
                 displayToaster(context, ACTION_NAME)
+                LongOperationDemo().longRunningMethod()
             }
-            val longOperationDemo = LongOperationDemo()
-            longOperationDemo.longRunningMethod()
         }
     }
 
