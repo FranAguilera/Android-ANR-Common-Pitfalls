@@ -12,7 +12,7 @@ import com.franjam.anr.common_anr_pitfalls.basic_components.BroadcastReceiverDem
 import com.franjam.anr.common_anr_pitfalls.deadlock.DeadlockDemo
 import com.franjam.anr.demo.R
 import com.franjam.anr.common_anr_pitfalls.expensive_operation.LongOperationDemo
-import com.franjam.anr.common_anr_pitfalls.rxblocking.BlockingRxApi
+import com.franjam.anr.common_anr_pitfalls.rxblocking.BlockingRxApiDemo
 
 
 class ANRDemoActivity : AppCompatActivity() {
@@ -57,7 +57,7 @@ class ANRDemoActivity : AppCompatActivity() {
             currentView?.let {
                 when (it.id) {
                     R.id.long_ui_operation -> LongOperationDemo().longRunningMethod()
-                    R.id.blocking_api -> BlockingRxApi().getStoredId()
+                    R.id.blocking_api -> BlockingRxApiDemo().getOrderId()
                     R.id.android_components -> BroadcastReceiverDemo().sendBroadcast(it.context)
                     R.id.deadlock -> DeadlockDemo().triggerDeadlock()
                     else -> Log.d(LOGCAT_TAG, "Unwanted listener for button view")
