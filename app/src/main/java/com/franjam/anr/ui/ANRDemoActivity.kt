@@ -7,23 +7,22 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.work.OneTimeWorkRequestBuilder
-import androidx.work.WorkManager
-import androidx.work.WorkRequest
 import com.franjam.anr.app_exit_info.LatestAppExitReason
+import com.franjam.anr.common_anr_pitfalls.CoroutineBlockingDemo
 import com.franjam.anr.common_anr_pitfalls.basic_components.BroadcastReceiverDemo
 import com.franjam.anr.common_anr_pitfalls.deadlock.DeadlockDemo
 import com.franjam.anr.demo.R
 import com.franjam.anr.common_anr_pitfalls.expensive_operation.LongOperationDemo
 import com.franjam.anr.common_anr_pitfalls.rxblocking.BlockingRxApiDemo
-import com.franjam.anr.common_anr_pitfalls.work_manager.RxDownloadWorker
 import com.franjam.anr.common_anr_pitfalls.work_manager.RxWorkerScheduler
+import kotlinx.coroutines.CoroutineScope
 
 
 class ANRDemoActivity : AppCompatActivity() {
 
     private lateinit var longOperationOnUiThreadButton: Button
-    private lateinit var blockingApiCallButton: Button
+    private lateinit var blockingRxApiCallButton: Button
+    private lateinit var blockingCoroutineButton: Button
     private lateinit var broadcastReceiverButton: Button
     private lateinit var rxWorkerButton: Button
     private lateinit var deadlockButton: Button
@@ -34,7 +33,8 @@ class ANRDemoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         longOperationOnUiThreadButton = findViewById(R.id.long_ui_operation)
-        blockingApiCallButton = findViewById(R.id.blocking_api)
+        blockingRxApiCallButton = findViewById(R.id.blocking_rx_api)
+        blockingCoroutineButton = findViewById(R.id.blocking_coroutine)
         broadcastReceiverButton = findViewById(R.id.android_components)
         deadlockButton = findViewById(R.id.deadlock)
         rxWorkerButton = findViewById(R.id.rx_worker)
@@ -48,7 +48,8 @@ class ANRDemoActivity : AppCompatActivity() {
     private fun setupButtonClickListeners() {
         val buttonClickListener = ButtonClickListener()
         longOperationOnUiThreadButton.setOnClickListener(buttonClickListener)
-        blockingApiCallButton.setOnClickListener(buttonClickListener)
+        blockingRxApiCallButton.setOnClickListener(buttonClickListener)
+        blockingCoroutineButton.setOnClickListener(buttonClickListener)
         broadcastReceiverButton.setOnClickListener(buttonClickListener)
         rxWorkerButton.setOnClickListener(buttonClickListener)
         deadlockButton.setOnClickListener(buttonClickListener)
@@ -64,7 +65,8 @@ class ANRDemoActivity : AppCompatActivity() {
             currentView?.let {
                 when (it.id) {
                     R.id.long_ui_operation -> LongOperationDemo().longRunningMethod()
-                    R.id.blocking_api -> BlockingRxApiDemo().getOrderId()
+                    R.id.blocking_rx_api -> BlockingRxApiDemo().getOrderId()
+                    R.id.blocking_coroutine -> CoroutineBlockingDemo().callBlocking()
                     R.id.android_components -> BroadcastReceiverDemo().sendBroadcast(it.context)
                     R.id.rx_worker -> RxWorkerScheduler().scheduleWork(applicationContext)
                     R.id.deadlock -> DeadlockDemo().triggerDeadlock()

@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/blocking_api"
+        android:id="@+id/blocking_rx_api"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
@@ -29,11 +29,25 @@
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/blocking_api_call_button_text"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/rx_worker"
+        app:layout_constraintBottom_toTopOf="@+id/blocking_coroutine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/long_ui_operation" />
-    
+
+    <Button
+        android:id="@+id/blocking_coroutine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/coroutine_blocking_button_text"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/rx_worker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blocking_rx_api" />
+
     <Button
         android:id="@+id/rx_worker"
         android:layout_width="match_parent"
@@ -46,7 +60,7 @@
         app:layout_constraintBottom_toTopOf="@+id/android_components"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blocking_api" />
+        app:layout_constraintTop_toBottomOf="@+id/blocking_coroutine" />
 
 
     <Button
