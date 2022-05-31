@@ -4,4 +4,5 @@
     <string name="broadcastreceiver_button_text">BroadcastReceiver</string>
     <string name="blocking_api_call_button_text">Rx blocking functions</string>
     <string name="long_operation_on_ui_thread">Long operation on main thread</string>
+    <string name="workmanager_rxworker">WorkManager - RxWorker</string>
 </resources>

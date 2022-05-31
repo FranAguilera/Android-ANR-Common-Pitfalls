@@ -7,12 +7,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.WorkRequest
 import com.franjam.anr.app_exit_info.LatestAppExitReason
 import com.franjam.anr.common_anr_pitfalls.basic_components.BroadcastReceiverDemo
 import com.franjam.anr.common_anr_pitfalls.deadlock.DeadlockDemo
 import com.franjam.anr.demo.R
 import com.franjam.anr.common_anr_pitfalls.expensive_operation.LongOperationDemo
 import com.franjam.anr.common_anr_pitfalls.rxblocking.BlockingRxApiDemo
+import com.franjam.anr.common_anr_pitfalls.work_manager.RxDownloadWorker
+import com.franjam.anr.common_anr_pitfalls.work_manager.RxWorkerScheduler
 
 
 class ANRDemoActivity : AppCompatActivity() {
@@ -20,6 +25,7 @@ class ANRDemoActivity : AppCompatActivity() {
     private lateinit var longOperationOnUiThreadButton: Button
     private lateinit var blockingApiCallButton: Button
     private lateinit var broadcastReceiverButton: Button
+    private lateinit var rxWorkerButton: Button
     private lateinit var deadlockButton: Button
     private lateinit var latestExitReasonText: TextView
 
@@ -31,6 +37,7 @@ class ANRDemoActivity : AppCompatActivity() {
         blockingApiCallButton = findViewById(R.id.blocking_api)
         broadcastReceiverButton = findViewById(R.id.android_components)
         deadlockButton = findViewById(R.id.deadlock)
+        rxWorkerButton = findViewById(R.id.rx_worker)
         latestExitReasonText = findViewById(R.id.latest_exit_reason_text)
         latestExitReasonText.movementMethod = ScrollingMovementMethod()
 
@@ -38,12 +45,12 @@ class ANRDemoActivity : AppCompatActivity() {
         displayLastExitReason()
     }
 
-
     private fun setupButtonClickListeners() {
         val buttonClickListener = ButtonClickListener()
         longOperationOnUiThreadButton.setOnClickListener(buttonClickListener)
         blockingApiCallButton.setOnClickListener(buttonClickListener)
         broadcastReceiverButton.setOnClickListener(buttonClickListener)
+        rxWorkerButton.setOnClickListener(buttonClickListener)
         deadlockButton.setOnClickListener(buttonClickListener)
     }
 
@@ -52,19 +59,22 @@ class ANRDemoActivity : AppCompatActivity() {
         latestExitReasonText.text = latestAppExitReason.getReadableExitReasonText()
     }
 
-    private class ButtonClickListener : View.OnClickListener {
+    private inner class ButtonClickListener : View.OnClickListener {
         override fun onClick(currentView: View?) {
             currentView?.let {
                 when (it.id) {
                     R.id.long_ui_operation -> LongOperationDemo().longRunningMethod()
                     R.id.blocking_api -> BlockingRxApiDemo().getOrderId()
                     R.id.android_components -> BroadcastReceiverDemo().sendBroadcast(it.context)
+                    R.id.rx_worker -> RxWorkerScheduler().scheduleWork(applicationContext)
                     R.id.deadlock -> DeadlockDemo().triggerDeadlock()
                     else -> Log.d(LOGCAT_TAG, "Unwanted listener for button view")
                 }
             }
         }
     }
+
+
 
     companion object {
         const val LOGCAT_TAG: String = "ANR_DEMO"

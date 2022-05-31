@@ -29,10 +29,25 @@
         android:layout_marginTop="@dimen/default_margin"
         android:text="@string/blocking_api_call_button_text"
         android:textAllCaps="false"
-        app:layout_constraintBottom_toTopOf="@+id/android_components"
+        app:layout_constraintBottom_toTopOf="@+id/rx_worker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/long_ui_operation" />
+    
+    <Button
+        android:id="@+id/rx_worker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:layout_marginEnd="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="@string/workmanager_rxworker"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/android_components"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blocking_api" />
+
 
     <Button
         android:id="@+id/android_components"
@@ -46,7 +61,7 @@
         app:layout_constraintBottom_toTopOf="@+id/deadlock"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/blocking_api" />
+        app:layout_constraintTop_toBottomOf="@+id/rx_worker" />
 
     <Button
         android:id="@+id/deadlock"

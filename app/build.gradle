@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    def work_manager_version = "2.7.1"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -42,4 +43,11 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+
+    implementation "androidx.work:work-runtime:$work_manager_version"
+    implementation "androidx.work:work-runtime-ktx:$work_manager_version"
+    implementation "androidx.work:work-rxjava2:$work_manager_version"
+    implementation "androidx.work:work-gcm:$work_manager_version"
+    androidTestImplementation "androidx.work:work-testing:$work_manager_version"
+    implementation "androidx.work:work-multiprocess:$work_manager_version"
 }
