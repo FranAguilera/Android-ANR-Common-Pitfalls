@@ -2,4 +2,5 @@
 <resources>
     <dimen name="margin_top">24dp</dimen>
     <dimen name="default_margin">16dp</dimen>
+    <dimen name="text_view_padding">8dp</dimen>
 </resources>
