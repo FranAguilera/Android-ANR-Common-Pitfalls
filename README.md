@@ -1,16 +1,22 @@
 # Android ANR Common Pitfalls
-Basic Android App demoing main causes of ANR
+Basic Android App demoing main causes of ANR.
 
+To reproduce an ANR:
+
+1) Click on any button
+2) Try to interact with screen (no touches will be shown)
+3) Wait for ANR dialog to be shown. 
+4) ANR stacktraces will be shown on next app launch
 
 
 | Basic layout  | ANR triggered 
 |--------------|--------------
-| ![image](https://user-images.githubusercontent.com/4230063/171075522-e5459650-6a01-4ba4-a1b0-c31e2e4bd5c9.png) | ![image](https://user-images.githubusercontent.com/4230063/171075595-0991d76f-a50e-4690-87cf-2ce8e6845e18.png) 
+| ![remove_task_1](https://user-images.githubusercontent.com/4230063/171275005-98604cfd-75e5-4937-a542-e555fbe72ca4.png) | ![anr_at_rx_blocking](https://user-images.githubusercontent.com/4230063/171275002-f3935967-bbe5-48b7-91a2-548ccd926578.png)
 
 
 | Deadlock demo - main held by tid=2  | Deadlock demo - background thread held by tid=1 
 |--------------|-------------
-|![image](https://user-images.githubusercontent.com/4230063/170209092-f3839b96-ddfd-4616-871c-ae5c0a41e7e6.png) | ![image](https://user-images.githubusercontent.com/4230063/170209397-15a60f89-623c-4b51-9cc8-93aae95ad8d5.png)
+| ![anr_deadlock](https://user-images.githubusercontent.com/4230063/171274997-9e898fb2-0b40-43bb-ac0a-f3cd2584d8eb.png) | ![held_by_thread_1](https://user-images.githubusercontent.com/4230063/171274987-7a66128b-b5b8-4e72-8334-2ac036b78eff.png)
 
 
 
