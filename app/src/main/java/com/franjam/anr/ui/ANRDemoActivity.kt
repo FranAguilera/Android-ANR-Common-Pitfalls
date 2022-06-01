@@ -8,14 +8,13 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.franjam.anr.app_exit_info.LatestAppExitReason
-import com.franjam.anr.common_anr_pitfalls.CoroutineBlockingDemo
+import com.franjam.anr.common_anr_pitfalls.coroutines.CoroutineBlockingDemo
 import com.franjam.anr.common_anr_pitfalls.basic_components.BroadcastReceiverDemo
 import com.franjam.anr.common_anr_pitfalls.deadlock.DeadlockDemo
 import com.franjam.anr.demo.R
 import com.franjam.anr.common_anr_pitfalls.expensive_operation.LongOperationDemo
 import com.franjam.anr.common_anr_pitfalls.rxblocking.BlockingRxApiDemo
 import com.franjam.anr.common_anr_pitfalls.work_manager.RxWorkerScheduler
-import kotlinx.coroutines.CoroutineScope
 
 
 class ANRDemoActivity : AppCompatActivity() {
