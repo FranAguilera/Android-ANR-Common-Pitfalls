@@ -4,7 +4,7 @@ Basic Android App demoing main causes of ANR.
 To reproduce an ANR:
 
 1) Click on any button
-2) Try to interact with screen (no touches will be shown)
+2) Try to interact with screen - Back Button is a good one
 3) Wait for ANR dialog to be shown. 
 4) ANR stacktraces will be shown on next app launch
 

@@ -1,0 +1,34 @@
+package com.franjam.anr.common_anr_pitfalls.coroutines
+
+<<<<<<< HEAD:app/src/main/java/com/franjam/anr/common_anr_pitfalls/coroutines/CoroutineBlockingDemo.kt
+import com.franjam.anr.logging.Logger.printCurrentThreadInfo
+=======
+import android.content.Context
+import android.widget.Toast
+import kotlinx.coroutines.Dispatchers
+>>>>>>> a2e2f7a (Fix coroutine and clean up code):app/src/main/java/com/franjam/anr/common_anr_pitfalls/CoroutineBlockingDemo.kt
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import java.lang.Thread.sleep
+
+class CoroutineBlockingDemo {
+    var myId = ""
+    fun callBlocking(context: Context): String = runBlocking {
+        launch(Dispatchers.IO) {
+            myId = getIdFromNetwork()
+        }
+        myId
+    }
+
+<<<<<<< HEAD:app/src/main/java/com/franjam/anr/common_anr_pitfalls/coroutines/CoroutineBlockingDemo.kt
+    suspend fun longRunningCode() {
+        printCurrentThreadInfo("CoroutineBlockingDemo.longRunningCode")
+        delay(10000L)
+=======
+    fun getIdFromNetwork(): String {
+        sleep(20000)
+        return "myId"
+>>>>>>> a2e2f7a (Fix coroutine and clean up code):app/src/main/java/com/franjam/anr/common_anr_pitfalls/CoroutineBlockingDemo.kt
+    }
+}
