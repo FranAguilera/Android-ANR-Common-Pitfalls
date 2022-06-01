@@ -1,5 +1,5 @@
 # Android ANR Common Pitfalls
-Basic Android App demoing main causes of ANR.
+Basic Android App demoing main causes of ANR and how to utilize ApplicationExitInfo
 
 To reproduce an ANR:
 
