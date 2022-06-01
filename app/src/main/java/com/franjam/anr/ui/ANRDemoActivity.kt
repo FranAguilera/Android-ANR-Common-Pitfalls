@@ -30,7 +30,6 @@ class ANRDemoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         longOperationOnUiThreadButton = findViewById(R.id.long_ui_operation)
         blockingRxApiCallButton = findViewById(R.id.blocking_rx_api)
         blockingCoroutineButton = findViewById(R.id.blocking_coroutine)
@@ -65,7 +64,7 @@ class ANRDemoActivity : AppCompatActivity() {
                 when (it.id) {
                     R.id.long_ui_operation -> LongOperationDemo().longRunningMethod()
                     R.id.blocking_rx_api -> BlockingRxApiDemo().getOrderId()
-                    R.id.blocking_coroutine -> CoroutineBlockingDemo().callBlocking()
+                    R.id.blocking_coroutine -> CoroutineBlockingDemo().callBlocking(it.context)
                     R.id.android_components -> BroadcastReceiverDemo().sendBroadcast(it.context)
                     R.id.rx_worker -> RxWorkerScheduler().scheduleWork(applicationContext)
                     R.id.deadlock -> DeadlockDemo().triggerDeadlock()
@@ -74,7 +73,6 @@ class ANRDemoActivity : AppCompatActivity() {
             }
         }
     }
-
 
 
     companion object {

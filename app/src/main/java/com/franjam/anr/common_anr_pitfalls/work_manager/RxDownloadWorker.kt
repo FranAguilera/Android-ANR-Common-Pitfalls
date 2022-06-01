@@ -23,13 +23,9 @@ class RxDownloadWorker(
         return Result.success()
     }
 
-    private fun simulateLongDownload() {
-        Thread.sleep(20000)
-    }
+    private fun simulateLongDownload() = Thread.sleep(20000)
 
-    private fun currentThreadName(): String {
-        return "[" + Thread.currentThread().name + "]"
-    }
+    private fun currentThreadName(): String = "[" + Thread.currentThread().name + "]"
 
     companion object {
         private const val LOGCAT_TAG = "RxDownloadWorker"

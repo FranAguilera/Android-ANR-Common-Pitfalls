@@ -6,4 +6,5 @@
     <string name="coroutine_blocking_button_text">Coroutine blocking functions</string>
     <string name="long_operation_on_ui_thread">Long operation on main thread</string>
     <string name="workmanager_rxworker">WorkManager - RxWorker</string>
+    <string name="instruction_text">Press any button followed by back button to trigger ANR</string>
 </resources>
