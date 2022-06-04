@@ -1,7 +1,9 @@
 # Android ANR Common Pitfalls
 Basic Android App demoing main causes of ANR and how to utilize ApplicationExitInfo
 
-To reproduce an ANR:
+Slides from droidconSF 2022 talk can be found here https://speakerdeck.com/yhartanto/anr-overview-at-uber-plus-leveraging-applicationexitinfo-api
+
+# To reproduce an ANR
 
 1) Click on any button
 2) Try to interact with screen - Back Button is a good one
